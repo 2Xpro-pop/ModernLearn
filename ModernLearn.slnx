@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="ModernLearn.Android/ModernLearn.Android.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+  <Project Path="ModernLearn.Browser/ModernLearn.Browser.csproj" />
+  <Project Path="ModernLearn.Desktop/ModernLearn.Desktop.csproj" />
+  <Project Path="ModernLearn.iOS/ModernLearn.iOS.csproj" />
+  <Project Path="ModernLearn/ModernLearn.csproj" />
+  <Project Path="ModernLearnCore.DataAccess/ModernLearnCore.DataAccess.csproj" Id="084c66e3-3ab6-4262-8341-0afaf836e693" />
+  <Project Path="ModernLearnCore/ModernLearnCore.csproj" Id="ed12bab2-eb7c-4190-9d6c-6a1f0b6fa3ff" />
+</Solution>

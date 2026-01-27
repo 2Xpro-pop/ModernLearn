@@ -1,0 +1,111 @@
+<Styles xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+
+		<Border Padding="23">
+			<Button Classes="Shadow Lesson" Width="400">
+				<StackPanel HorizontalAlignment="Left">
+					<TextBlock Text="Avalonia" Classes="H1" Theme="{StaticResource TitleTextBlock}"/>
+					<TextBlock Text="Avalonia is modern ui framework."/>
+				</StackPanel>
+
+				<Button.Tag>
+					<Image Source="/Assets/Avalonia.png" Classes="LessonIcon"/>
+				</Button.Tag>
+
+			</Button>
+		</Border>
+
+	</Design.PreviewWith>
+
+	<Style Selector="">
+
+	</Style>
+
+	<Style Selector="Button.Lesson">
+
+		<Setter Property="Padding" Value="{DynamicResource ThicknessCardPadding}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderCardBorderBrush}" />
+		<Setter Property="CornerRadius" Value="{DynamicResource RadiusCardCornerRadius}" />
+		<Setter Property="Background" Value="{DynamicResource BorderCardBackground}" />
+		<Setter Property="BorderThickness" Value="{DynamicResource ThicknessCardBorderThickness}" />
+		<Setter Property="Margin" Value="{DynamicResource ThicknessCardMargin}" />
+		<Setter Property="HorizontalContentAlignment" Value="Left"/>
+		<Setter Property="VerticalContentAlignment" Value="Top"/>
+		<Setter Property="HorizontalAlignment" Value="Stretch"/>
+		<Setter Property="TextElement.Foreground" Value="White"/>
+		<Setter Property="Height" Value="128"/>
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border Classes="Hover"
+							Theme="{StaticResource CardBorder}"
+							Padding="0" Margin="0"
+							Background="{TemplateBinding Background}"
+							BackgroundSizing="{TemplateBinding BackgroundSizing}"
+							CornerRadius="{TemplateBinding CornerRadius}"
+							TextElement.FontSize="{TemplateBinding FontSize}"
+							TextElement.FontWeight="{TemplateBinding FontWeight}"
+							BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid ColumnDefinitions="*, Auto">
+
+							<ContentPresenter Content="{TemplateBinding Tag}" Grid.Column="1" />
+
+							<ContentPresenter Grid.ColumnSpan="2"
+											  Name="PART_ContentPresenter"
+											  Background="Transparent"
+											  Padding="{TemplateBinding Padding}"
+											  HorizontalAlignment="Stretch"
+											  VerticalAlignment="Stretch"
+											  CornerRadius="{TemplateBinding CornerRadius}"
+											  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+											  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+											  Content="{TemplateBinding Content}"
+											  ContentTemplate="{TemplateBinding ContentTemplate}"
+											  UseLayoutRounding="False" />
+
+
+
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+
+
+	</Style>
+
+	<Style Selector="Button.Lesson Image.LessonIcon">
+		<Setter Property="IsHitTestVisible" Value="False"/>
+		<!--
+
+		<Setter Property="Width" Value="175"/>
+		<Setter Property="Height" Value="120"/>
+		<Setter Property="Stretch" Value="Uniform"/>
+
+		<Setter Property="HorizontalAlignment" Value="Right"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="Margin" Value="0,0,16,0"/>
+
+		<Setter Property="RenderTransformOrigin" Value="1,0.5"/>
+		<Setter Property="RenderTransform">
+		<Rotate3DTransform AngleY="-30"
+		AngleX="-8"
+		Depth="178"/>
+		</Setter>
+
+		<Setter Property="OpacityMask">
+		<LinearGradientBrush StartPoint="100%,0%" EndPoint="0%,100%">
+		<GradientStop Offset="0.0" Color="#FFFFFFFF"/>
+		<GradientStop Offset="0.55" Color="#CCFFFFFF"/>
+		<GradientStop Offset="1.0" Color="#00FFFFFF"/>
+		</LinearGradientBrush>
+		</Setter>
+
+		<Setter Property="Opacity" Value="0.9"/>
+
+		-->
+	</Style>
+
+</Styles>

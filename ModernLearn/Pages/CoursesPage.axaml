@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:ia="using:Xaml.Behaviors.Interactions.Animated"
+			 xmlns:vm="using:ModernLearn.ViewModels"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:DataType="vm:CoursesPageVm"
+			 x:Class="ModernLearn.CoursesPage">
+
+	<Design.DataContext>
+		<vm:CoursesPageVm />
+	</Design.DataContext>
+
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+
+		<Interaction.Behaviors>
+			<ia:VerticalScrollViewerAnimatedBehavior/>
+		</Interaction.Behaviors>
+
+		<ItemsControl ItemsSource="{Binding Courses}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate DataType="vm:CourseVm">
+					<Button Classes="Lesson">
+
+						<StackPanel HorizontalAlignment="Left">
+							<TextBlock Text="{Binding Course.Name}" Classes="H1" Theme="{StaticResource TitleTextBlock}"/>
+							<TextBlock Text="{Binding Course.Description}"/>
+						</StackPanel>
+
+						<Button.Tag>
+							<Image Source="{Binding Image}" />
+						</Button.Tag>
+
+					</Button>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</ScrollViewer>
+
+</UserControl>
