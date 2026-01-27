@@ -24,8 +24,8 @@
 					<Button Classes="Lesson">
 
 						<StackPanel HorizontalAlignment="Left">
-							<TextBlock Text="{Binding Course.Name}" Classes="H1" Theme="{StaticResource TitleTextBlock}"/>
-							<TextBlock Text="{Binding Course.Description}"/>
+							<TextBlock Text="{Binding Course.DisplayName}" Classes="H1" Theme="{StaticResource TitleTextBlock}"/>
+							<TextBlock Text="{Binding Course.DisplayDescription}"/>
 						</StackPanel>
 
 						<Button.Tag>

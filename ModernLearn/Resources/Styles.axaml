@@ -5,7 +5,7 @@
 		<Border Padding="23">
 			<Button Classes="Shadow Lesson" Width="400">
 				<StackPanel HorizontalAlignment="Left">
-					<TextBlock Text="Avalonia" Classes="H1" Theme="{StaticResource TitleTextBlock}"/>
+					<TextBlock Text="Avalonia"/>
 					<TextBlock Text="Avalonia is modern ui framework."/>
 				</StackPanel>
 
@@ -17,10 +17,6 @@
 		</Border>
 
 	</Design.PreviewWith>
-
-	<Style Selector="">
-
-	</Style>
 
 	<Style Selector="Button.Lesson">
 
@@ -74,6 +70,16 @@
 		</Setter>
 
 
+	</Style>
+
+	<Style Selector="Button.Lesson TextBlock:nth-child(1)">
+		<Setter Property="FontSize" Value="{StaticResource TextBlockTitleH1FontSize}" />
+		<Setter Property="Theme" Value="{StaticResource TitleTextBlock}" />
+	</Style>
+
+	<Style Selector="Button.Lesson TextBlock:nth-child(2)">
+		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="Margin" Value="0, 0, 128, 0" />
 	</Style>
 
 	<Style Selector="Button.Lesson Image.LessonIcon">
