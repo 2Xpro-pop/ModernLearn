@@ -66,6 +66,6 @@ public sealed class Code : TemplatedControl
             return;
         }
 
-        _textEditor.Text = Text;
+        _textEditor.Text = Text.RemoveBaseIndent();
     }
 }
