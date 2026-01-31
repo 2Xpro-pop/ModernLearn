@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Disposables.Fluent;
 using System.Reactive.Linq;
@@ -36,6 +37,15 @@ public sealed class LessonsPageVm : PageVm
     public LessonsPageVm(Course course)
     {
         _course = course;
+        OpenLessonCommand = ReactiveCommand.CreateFromTask((LessonVm lesson) =>
+        {
+            return GoToPage(new LessonPageVm(lesson));
+        });
+    }
+
+    public ReactiveCommand<LessonVm, Unit> OpenLessonCommand
+    {
+        get;
     }
 
     public ObservableCollection<LessonVm> Lessons { get; } = [];
@@ -52,10 +62,10 @@ public sealed class LessonsPageVm : PageVm
 
     }
 
-    private static LessonVm ToVm(Lesson lesson)
+    private LessonVm ToVm(Lesson lesson)
     {
         var image = ImageHelper.LoadFromResource($"Assets/{lesson.Id}.png");
 
-        return new(lesson, image);
+        return new(lesson, image, OpenLessonCommand);
     }
 }

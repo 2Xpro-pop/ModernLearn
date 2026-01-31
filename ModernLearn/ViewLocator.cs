@@ -15,6 +15,7 @@ public sealed class ViewLocator : IViewLocator
         WelcomePageVm => new WelcomePage() { DataContext = viewModel },
         CoursesPageVm => new CoursesPage() { DataContext = viewModel },
         LessonsPageVm => new LessonsPage() { DataContext = viewModel },
+        LessonPageVm lesson => LessonPageVm.Parse(lesson.Lesson).SetVm(lesson),
         _ => throw new ArgumentOutOfRangeException(nameof(viewModel))
     };
 }

@@ -29,6 +29,7 @@
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="System.Interactive" />
 		<PackageReference Include="System.Interactive.Async" />
+		<PackageReference Include="TextMateSharp" />
 		<PackageReference Include="TextMateSharp.Grammars" />
 	</ItemGroup>
 

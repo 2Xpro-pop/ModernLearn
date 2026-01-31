@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using ModernLearn.Controls;
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -23,7 +24,10 @@ public static class SafeXamlLoader
         { nameof(Border),     typeof(Border) },
         { nameof(TextBlock),  typeof(TextBlock) },
         { "H1",               typeof(TextBlock) },
+        { "H2",               typeof(TextBlock) },
         { "P",                typeof(TextBlock) },
+        { nameof(Code) ,      typeof(Code) },
+        { nameof(Lesson),     typeof(Lesson) }
 
     }.ToFrozenDictionary(StringComparer.Ordinal);
 
@@ -38,7 +42,10 @@ public static class SafeXamlLoader
             [nameof(Border)] = static () => new Border(),
             [nameof(TextBlock)] = static () => new TextBlock(),
             ["H1"] = static () => new TextBlock { Classes = { "H1" } },
+            ["H2"] = static () => new TextBlock { Classes = { "H2" } },
             ["P"] = static () => new TextBlock { Classes = { "P" } },
+            [nameof(Code)] = static () => new Code(),
+            [nameof(Lesson)] = static () => new Lesson(),
         }.ToFrozenDictionary(StringComparer.Ordinal);
 
     private static readonly FrozenDictionary<string, RuntimeMx> WellKnowMarkupExtensions =
@@ -241,6 +248,11 @@ public static class SafeXamlLoader
             return;
         }
 
+        if(obj is Lesson && localName is "Id" or "Name" or "Description")
+        {
+            return;
+        }
+
         var prop = GetProperty(obj.GetType(), localName)
                    ?? throw new FormatException($"Unknown property '{localName}' on type '{obj.GetType().Name}'.");
 
@@ -341,6 +353,17 @@ public static class SafeXamlLoader
             return;
         }
 
+        if(parent is Lesson lesson)
+        {
+            if(child is Control c3)
+            {
+                lesson.Children.Add(c3);
+                return;
+            }
+
+            throw new FormatException($"Lesson can only contain Controls as children.");
+        }
+
         throw new FormatException($"'{parent.GetType().Name}' cannot contain '{child.GetType().Name}'.");
     }
 
@@ -349,6 +372,12 @@ public static class SafeXamlLoader
         if (current is TextBlock tb)
         {
             tb.Text = tb.Text is null ? text : tb.Text + text;
+            return;
+        }
+
+        if(current is Code code)
+        {
+            code.Text = code.Text is null ? text : code.Text + text;
             return;
         }
 

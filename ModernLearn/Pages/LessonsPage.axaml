@@ -16,7 +16,9 @@
 		<ItemsControl ItemsSource="{Binding Lessons}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate DataType="vm:LessonVm">
-					<Button Classes="Lesson">
+					<Button Classes="Lesson" 
+							Command="{Binding Command}"
+							CommandParameter="{Binding}">
 
 						<StackPanel HorizontalAlignment="Left">
 							<TextBlock Text="{Binding Lesson.Name}" Classes="H1" Theme="{StaticResource TitleTextBlock}"/>

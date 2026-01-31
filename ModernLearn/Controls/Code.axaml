@@ -21,9 +21,8 @@
 
 	<ControlTheme x:Key="{x:Type controls:Code}" TargetType="controls:Code">
 		<Setter Property="Template">
-			<ControlTemplate>
-				<ae:TextEditor Text="Hello AvaloniaEdit!"
-							   Name="PART_TextEditor"
+			<ControlTemplate TargetType="controls:Code">
+				<ae:TextEditor Name="PART_TextEditor"
 							   ShowLineNumbers="True"
 							   IsReadOnly="True"
 							   FontFamily="Cascadia Code,Consolas,Menlo,Monospace"/>
