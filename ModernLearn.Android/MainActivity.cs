@@ -10,6 +10,7 @@ namespace ModernLearn.Android;
     Label = "ModernLearn.Android",
     Theme = "@style/MyTheme.NoActionBar",
     Icon = "@drawable/icon",
+    ScreenOrientation = ScreenOrientation.Portrait,
     MainLauncher = true,
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode)]
 public class MainActivity : AvaloniaMainActivity<App>
