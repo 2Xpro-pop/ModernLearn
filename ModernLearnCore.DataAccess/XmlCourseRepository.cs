@@ -15,6 +15,8 @@ public sealed class XmlCourseRepository : ICourseRepository
     private readonly Assembly _assembly;
     private readonly string _resourceName;
 
+    private ImmutableArray<Course>? _coursesCache;
+
     private XmlCourseRepository(string resourceName, Assembly? assembly = null)
     {
         _resourceName = resourceName ?? throw new ArgumentNullException(nameof(resourceName));
@@ -22,6 +24,40 @@ public sealed class XmlCourseRepository : ICourseRepository
     }
 
     public async IAsyncEnumerable<Course> GetCourses()
+    {
+        if (_coursesCache is not null)
+        {
+            foreach (var course in _coursesCache)
+            {
+                yield return course;
+            }
+            yield break;
+        }
+
+        var courses = ImmutableArray.CreateBuilder<Course>();
+
+        await foreach (var course in GetCoursesCore())
+        {
+            courses.Add(course);
+            yield return course;
+        }
+
+        _coursesCache = courses.ToImmutable();
+    }
+
+    public async Task<Course?> GetCourseById(Guid id)
+    {
+        await foreach (var course in GetCourses())
+        {
+            if (course.Id == id)
+            {
+                return course;
+            }
+        }
+        return null;
+    }
+
+    private async IAsyncEnumerable<Course> GetCoursesCore()
     {
         await using var stream = _assembly.GetManifestResourceStream(_resourceName);
         if (stream is null)
@@ -67,18 +103,14 @@ public sealed class XmlCourseRepository : ICourseRepository
     private static ImmutableArray<Guid> ParseLessonIds(XElement courseElement)
     {
         var builder = ImmutableArray.CreateBuilder<Guid>();
-        var lessons = courseElement.Element("Lessons");
 
-        if (lessons is not null)
+        foreach (var lesson in courseElement.Elements("Lesson"))
         {
-            foreach (var lesson in lessons.Elements("Lesson"))
+            var idAttr = lesson.Attribute("Id");
+            if (idAttr is not null &&
+                Guid.TryParse(idAttr.Value.Trim('{', '}'), out var id))
             {
-                var idAttr = lesson.Attribute("Id");
-                if (idAttr is not null &&
-                    Guid.TryParse(idAttr.Value.Trim('{', '}'), out var id))
-                {
-                    builder.Add(id);
-                }
+                builder.Add(id);
             }
         }
 

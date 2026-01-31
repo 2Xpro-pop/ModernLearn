@@ -23,7 +23,7 @@ public abstract partial class PageVm : ViewModelBase, IRoutableViewModel
         });
     }
 
-    public PageVm() : this(Design.IsDesignMode ? null! : Locator.GetRequiredService<MainViewModel>())
+    public PageVm() : this(Design.IsDesignMode ? Locator.GetService<MainViewModel>()! : Locator.GetRequiredService<MainViewModel>())
     {
 
     }

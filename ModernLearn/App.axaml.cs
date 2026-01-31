@@ -13,7 +13,9 @@ public partial class App : Application
     public App()
     {
         var culture = System.Globalization.CultureInfo.CurrentUICulture;
+
         Locator.CurrentMutable.RegisterConstant<ICourseRepository>(XmlCourseRepository.Default);
+        Locator.CurrentMutable.RegisterConstant<ILessonRepository>(XmlLessonRepository.Default);
     }
 
     public override void Initialize()

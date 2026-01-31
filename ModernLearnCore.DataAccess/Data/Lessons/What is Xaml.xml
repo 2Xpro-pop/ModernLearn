@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Lesson Id="{FB94B0F6-41F7-48C8-9547-73EAB74A11B7}" Name="What is Xaml?" Description="XAML (eXtensible Application Markup Language) is a declarative XML-based language used to define user interfaces in .NET applications.">
+	<H2>Introduction</H2>
+	<P>
+		SomeFact
+	</P>
+	<Code Language="xaml">
+		<![CDATA[
+		<StackPanel>
+			<TextBlock Text="What is XAML?" FontWeight="Bold" FontSize="24"/>
+			<TextBlock Text="XAML (eXtensible Application Markup Language) is a declarative XML-based language used to define user interfaces in .NET applications."/>
+		</StackPanel>
+		]]>
+	</Code>
+	<P>
+		In that course you woudl learn about XAML and how to use it to create user interfaces for your applications. 
+	</P>
+</Lesson>

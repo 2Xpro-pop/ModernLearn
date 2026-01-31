@@ -6,7 +6,7 @@ public interface ILessonRepository
 {
     public Task<Lesson?> GetLessonById(Guid id);
 
-    public IAsyncEnumerable<Lesson?> GetLessons();
+    public IAsyncEnumerable<Lesson> GetLessons();
 
-    public IAsyncEnumerable<Lesson?> GetLessonsByCourseId(Guid courseId);
+    public IAsyncEnumerable<Lesson> GetLessonsByCourseId(Guid courseId);
 }

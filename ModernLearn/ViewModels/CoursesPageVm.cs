@@ -2,11 +2,13 @@
 using DynamicData;
 using ModernLearnCore.DataAccess;
 using ModernLearnCore.DataAccess.Models;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Disposables.Fluent;
 using System.Reactive.Linq;
@@ -65,6 +67,16 @@ public sealed class CoursesPageVm : PageVm
             Courses.AddRange(courses.Select(ToVmSync));
         }
 #endif
+
+        OpenCourseCommand = ReactiveCommand.CreateFromTask(async (CourseVm course) => 
+        {
+            await GoToPage(new LessonsPageVm(course.Course));
+        });
+    }
+
+    public ReactiveCommand<CourseVm, Unit> OpenCourseCommand
+    {
+        get;
     }
 
     protected override void Initialize(CompositeDisposable disposables)

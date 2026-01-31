@@ -8,4 +8,6 @@ namespace ModernLearnCore.DataAccess;
 public interface ICourseRepository
 {
     public IAsyncEnumerable<Course> GetCourses();
+
+    public Task<Course?> GetCourseById(Guid id);
 }

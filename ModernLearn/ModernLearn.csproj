@@ -12,8 +12,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
+		<PackageReference Include="Avalonia.AvaloniaEdit" />
 		<PackageReference Include="Avalonia.Themes.Fluent" />
 		<PackageReference Include="Avalonia.Fonts.Inter" />
+		<PackageReference Include="AvaloniaEdit.TextMate" />
 		<PackageReference Include="AvaloniaUI.DiagnosticsSupport">
 			<IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
 			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
@@ -27,6 +29,7 @@
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="System.Interactive" />
 		<PackageReference Include="System.Interactive.Async" />
+		<PackageReference Include="TextMateSharp.Grammars" />
 	</ItemGroup>
 
 	<ItemGroup>

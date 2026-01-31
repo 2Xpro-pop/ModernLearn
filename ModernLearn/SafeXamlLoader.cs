@@ -22,6 +22,9 @@ public static class SafeXamlLoader
         { nameof(Button),     typeof(Button) },
         { nameof(Border),     typeof(Border) },
         { nameof(TextBlock),  typeof(TextBlock) },
+        { "H1",               typeof(TextBlock) },
+        { "P",                typeof(TextBlock) },
+
     }.ToFrozenDictionary(StringComparer.Ordinal);
 
     // AOT-safe factories (no Activator)
@@ -34,6 +37,8 @@ public static class SafeXamlLoader
             [nameof(Button)] = static () => new Button(),
             [nameof(Border)] = static () => new Border(),
             [nameof(TextBlock)] = static () => new TextBlock(),
+            ["H1"] = static () => new TextBlock { Classes = { "H1" } },
+            ["P"] = static () => new TextBlock { Classes = { "P" } },
         }.ToFrozenDictionary(StringComparer.Ordinal);
 
     private static readonly FrozenDictionary<string, RuntimeMx> WellKnowMarkupExtensions =

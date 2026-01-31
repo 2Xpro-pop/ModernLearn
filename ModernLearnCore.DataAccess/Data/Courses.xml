@@ -4,7 +4,9 @@
 	<Course Id="{EB68DFFB-360E-41B1-966D-D626A4A15E82}"
 			Title="Avalonia"
 			Description="Avalonia is modern ui framework."
-			ImageName="Assets/Avalonia.png" />
+			ImageName="Assets/Avalonia.png">
+		<Lesson Id="{FB94B0F6-41F7-48C8-9547-73EAB74A11B7}"/>
+	</Course>
 
 	<Course Id="{A12C3F45-1E09-4A77-9F53-8B2D25982D90}"
 			Title="C# Fundamentals"

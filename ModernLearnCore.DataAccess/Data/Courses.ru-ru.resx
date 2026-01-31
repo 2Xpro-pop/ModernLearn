@@ -100,7 +100,7 @@
 	</resheader>
 
 	<!-- eb68dffb-360e-41b1-966d-d626a4a15e82 : Avalonia -->
-	<data name="eb68dffb-360e-41b1-966d-d626a4a15e82.Title" xml:space="preserve">
+	<data name="eb68dffb-360e-41b1-966d-d626a4a15e82.Name" xml:space="preserve">
 	  <value>Avalonia</value>
 	</data>
 	<data name="eb68dffb-360e-41b1-966d-d626a4a15e82.Description" xml:space="preserve">
@@ -108,7 +108,7 @@
 	</data>
 
 	<!-- a12c3f45-1e09-4a77-9f53-8b2d25982d90 : C# Fundamentals -->
-	<data name="a12c3f45-1e09-4a77-9f53-8b2d25982d90.Title" xml:space="preserve">
+	<data name="a12c3f45-1e09-4a77-9f53-8b2d25982d90.Name" xml:space="preserve">
 	  <value>Основы C#</value>
 	</data>
 	<data name="a12c3f45-1e09-4a77-9f53-8b2d25982d90.Description" xml:space="preserve">
@@ -116,7 +116,7 @@
 	</data>
 
 	<!-- 5f77ea0a-2a0c-48ca-9c5f-3af7411b3a28 : Reactive Extensions -->
-	<data name="5f77ea0a-2a0c-48ca-9c5f-3af7411b3a28.Title" xml:space="preserve">
+	<data name="5f77ea0a-2a0c-48ca-9c5f-3af7411b3a28.Name" xml:space="preserve">
 	  <value>Reactive Extensions</value>
 	</data>
 	<data name="5f77ea0a-2a0c-48ca-9c5f-3af7411b3a28.Description" xml:space="preserve">
@@ -124,7 +124,7 @@
 	</data>
 
 	<!-- 9b4d5ae2-7c9e-4c23-8a8d-52158d0b6a77 : Entity Framework Core -->
-	<data name="9b4d5ae2-7c9e-4c23-8a8d-52158d0b6a77.Title" xml:space="preserve">
+	<data name="9b4d5ae2-7c9e-4c23-8a8d-52158d0b6a77.Name" xml:space="preserve">
 	  <value>Entity Framework Core</value>
 	</data>
 	<data name="9b4d5ae2-7c9e-4c23-8a8d-52158d0b6a77.Description" xml:space="preserve">
@@ -132,7 +132,7 @@
 	</data>
 
 	<!-- c2eac1af-4a29-4e34-9547-588d6c514a7e : Git and GitHub -->
-	<data name="c2eac1af-4a29-4e34-9547-588d6c514a7e.Title" xml:space="preserve">
+	<data name="c2eac1af-4a29-4e34-9547-588d6c514a7e.Name" xml:space="preserve">
 	  <value>Git и GitHub</value>
 	</data>
 	<data name="c2eac1af-4a29-4e34-9547-588d6c514a7e.Description" xml:space="preserve">

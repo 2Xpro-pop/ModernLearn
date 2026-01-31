@@ -21,7 +21,9 @@
 		<ItemsControl ItemsSource="{Binding Courses}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate DataType="vm:CourseVm">
-					<Button Classes="Lesson">
+					<Button Classes="Lesson" 
+							Command="{Binding $parent[UserControl].((vm:CoursesPageVm)DataContext).OpenCourseCommand}"
+							CommandParameter="{Binding}">
 
 						<StackPanel HorizontalAlignment="Left">
 							<TextBlock Text="{Binding Course.DisplayName}" Classes="H1" Theme="{StaticResource TitleTextBlock}"/>

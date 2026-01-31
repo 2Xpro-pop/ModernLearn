@@ -11,6 +11,8 @@ namespace ModernLearn;
 
 public static class ImageHelper
 {
+    public static Bitmap? LoadFromResource(string path) => LoadFromResource(new Uri($"avares://ModernLearn/{path}"));
+
     public static Bitmap? LoadFromResource(Uri resourceUri)
     {
         if(!AssetLoader.Exists(resourceUri))

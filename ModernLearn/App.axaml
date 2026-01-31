@@ -1,14 +1,31 @@
 <Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:ModernLearn"
-             xmlns:semi="https://irihi.tech/semi"
-             x:Class="ModernLearn.App"
-             RequestedThemeVariant="Dark">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="using:ModernLearn"
+			 xmlns:semi="https://irihi.tech/semi"
+			 x:Class="ModernLearn.App"
+			 RequestedThemeVariant="Dark">
+	<!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.Styles>
-        <semi:SemiTheme Locale="en-US"/>
-        <semi:SemiPopupAnimations /> 
-        <StyleInclude Source="Resources/Styles.axaml"/>
-    </Application.Styles>
+	<Application.Styles>
+
+		<FluentTheme />
+		<!-- AvaloniaEdit styles (required!) -->
+		<StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+
+		<semi:SemiTheme Locale="en-US"/>
+		<semi:SemiPopupAnimations />
+
+
+		<StyleInclude Source="/Resources/Styles.axaml"/>
+	</Application.Styles>
+
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<MergeResourceInclude Source="/Controls/Code.axaml" />
+				<MergeResourceInclude Source="/Controls/Lesson.axaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+
 </Application>

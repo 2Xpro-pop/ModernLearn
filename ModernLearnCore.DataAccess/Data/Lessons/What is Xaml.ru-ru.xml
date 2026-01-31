@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Lesson Name="Что такое XAML?" Description="XAML (eXtensible Application Markup Language) — это декларативный язык на основе XML, используемый для определения пользовательских интерфейсов в приложениях .NET.">
+	<H1>Что такое XAML?</H1>
+	<H2>Введение</H2>
+	<P>
+		Некоторый факт
+	</P>
+	<Code Language="xaml">
+		<![CDATA[
+		<StackPanel>
+			<TextBlock Text="Что такое XAML?" FontWeight="Bold" FontSize="24"/>
+			<TextBlock Text="XAML (eXtensible Application Markup Language) — это декларативный язык на основе XML, используемый для определения пользовательских интерфейсов в приложениях .NET."/>
+		</StackPanel>
+		]]>
+	</Code>
+	<P>
+		В этом курсе вы узнаете о XAML и о том, как использовать его для создания пользовательских интерфейсов для ваших приложений.
+	</P>
+</Lesson>

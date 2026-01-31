@@ -114,4 +114,9 @@
 		-->
 	</Style>
 
+	<Style Selector="TextBlock.P">
+		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="Margin" Value="0,0,0,16" />
+	</Style>
+
 </Styles>
