@@ -1,5 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:ml="using:ModernLearn"
+					xmlns:vm="using:ModernLearn.ViewModels"
 					xmlns:controls="using:ModernLearn.Controls">
 
 	<!--
@@ -13,41 +15,96 @@
 	<Design.PreviewWith>
 		<StackPanel Width="400" Spacing="10">
 			<StackPanel Background="{DynamicResource SystemRegionBrush}">
-				<controls:Examine />
+				<controls:Examine>
+					<controls:File FilePath="Hello/11.cs" xml:space="preserve">
+						using System;
+
+						namespace HelloWorld
+						{
+						class Program
+						{
+						static void Main(string[] args)
+						{
+						Console.WriteLine("Hello, World!");
+						}
+						}
+						}
+					</controls:File>
+				</controls:Examine>
 			</StackPanel>
 		</StackPanel>
 	</Design.PreviewWith>
 
+	<DataTemplate x:Key="ExamineFileButton" x:DataType="controls:File">
+		<TextBlock Text="{Binding FilePath}"
+				   FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
+				   TextTrimming="CharacterEllipsis"/>
+	</DataTemplate>
+
 	<ControlTheme x:Key="{x:Type controls:Examine}" TargetType="controls:Examine">
+
+		<ControlTheme.Resources>
+			<SolidColorBrush x:Key="PaneBackground" Color="#FF171717"/>
+		</ControlTheme.Resources>
+
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Grid>
+
+					<Grid.Resources>
+						<x:Boolean x:Key="IsPanelOpen">False</x:Boolean>
+					</Grid.Resources>
+
 					<SplitView x:Name="PART_SplitView"
+							   Grid.RowSpan="2"
 							   PanePlacement="Left"
-							   DisplayMode="CompactOverlay"
+							   IsPaneOpen="{DynamicResource IsPanelOpen}"
+							   DisplayMode="Overlay"
 							   OpenPaneLength="300">
+
 						<SplitView.Pane>
-							<Button x:Name="PART_Button">
-								<PathIcon>
-									<PathIcon.Data>
-										M 3,6 L 21,6 L 21,8 L 3,8 Z M 3,11 L 21,11 L 21,13 L 3,13 Z M 3,16 L 21,16 L 21,18 L 3,18 Z
-									</PathIcon.Data>
-								</PathIcon>
-							</Button>
+
+							<StackPanel Spacing="10">
+
+								<Border Height="{Binding #PART_Button.Bounds.Size.Height}"/>
+
+								<ItemsControl x:Name="PART_Files"/>
+							</StackPanel>
+
+
 						</SplitView.Pane>
 
-						<Grid>
-							<TextBlock Text="Content"
-									   FontSize="24"
-									   VerticalAlignment="Center"
-									   HorizontalAlignment="Center"/>
+						<Grid RowDefinitions="Auto, *">
+
+							<Border Grid.Row="0"
+									Height="{Binding #PART_Button.Bounds.Size.Height}"
+									Background="{StaticResource PaneBackground}"/>
+
+							<ContentPresenter x:Name="PART_FileHost"
+											  Grid.Row="1"
+											  Margin="0, 10, 0, 0"
+											  HorizontalAlignment="Stretch"
+											  Content="{TemplateBinding SelectedFile}"
+											  VerticalAlignment="Stretch"/>
 						</Grid>
 					</SplitView>
+
+					<Button x:Name="PART_Button"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Command="{ml:SetResource Key=IsPanelOpen, Expression=!$self}">
+						<PathIcon>
+							<PathIcon.Data>
+								M 3,6 L 21,6 L 21,8 L 3,8 Z M 3,11 L 21,11 L 21,13 L 3,13 Z M 3,16 L 21,16 L 21,18 L 3,18 Z
+							</PathIcon.Data>
+						</PathIcon>
+					</Button>
 				</Grid>
 			</ControlTemplate>
 		</Setter>
 
-		<Style Selector="^ /template/ SplitView#SplitView">
+		<Style Selector="^ /template/ SplitView#PART_SplitView">
+			<Setter Property="PaneBackground" Value="{StaticResource PaneBackground}"/>
 		</Style>
 
 	</ControlTheme>

@@ -5,6 +5,7 @@
 			 xmlns:app="using:ModernLearn"
 			 xmlns:rx="clr-namespace:ReactiveUI.Avalonia;assembly=ReactiveUI.Avalonia"
 			 xmlns:vm="using:ModernLearn.ViewModels"
+			 xmlns:control="using:ModernLearn.Controls"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			 x:Class="ModernLearn.Views.MainView"
 			 x:DataType="vm:MainViewModel">
@@ -14,15 +15,14 @@
 		<vm:MainViewModel />
 	</Design.DataContext>
 
-	<Grid >
+	<Grid>
 
-		<Panel Grid.ColumnSpan="3">
+		<Panel>
 			<Image Source="/Assets/Bg-Light.png" Stretch="UniformToFill"/>
 			<Border Background="#CC000000" />
 		</Panel>
 
-
-		<Border Grid.ColumnSpan="3" Padding="4">
+		<Border Padding="4">
 			<rx:RoutedViewHost x:Name="Router" >
 
 				<rx:RoutedViewHost.ViewLocator>
@@ -32,8 +32,22 @@
 			</rx:RoutedViewHost>
 		</Border>
 
+		<control:Examine>
+			<control:File FilePath="Hello/11.cs" xml:space="preserve">
+						using System;
 
-
+						namespace HelloWorld
+						{
+							class Program
+							{
+								static void Main(string[] args)
+								{
+									Console.WriteLine("Hello, World!");
+								}
+							}
+						}
+					</control:File>
+			</control:Examine>
 
 	</Grid>
 
