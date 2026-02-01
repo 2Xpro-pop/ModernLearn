@@ -24,7 +24,8 @@
 			<ControlTemplate TargetType="controls:Code">
 				<ae:TextEditor Name="PART_TextEditor"
 							   ShowLineNumbers="True"
-							   WordWrap="True"
+							   FontSize="{DynamicResource FontSizeInCode}"
+							   WordWrap="{DynamicResource WordWrapInCode}"
 							   IsReadOnly="True"
 							   FontFamily="Cascadia Code,Consolas,Menlo,Monospace"/>
 			</ControlTemplate>

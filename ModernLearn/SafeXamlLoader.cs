@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Media;
 using ModernLearn.Controls;
 using System;
@@ -41,9 +42,30 @@ public static class SafeXamlLoader
             [nameof(Button)] = static () => new Button(),
             [nameof(Border)] = static () => new Border(),
             [nameof(TextBlock)] = static () => new TextBlock(),
-            ["H1"] = static () => new TextBlock { Classes = { "H1" } },
-            ["H2"] = static () => new TextBlock { Classes = { "H2" } },
-            ["P"] = static () => new TextBlock { Classes = { "P" } },
+            ["H1"] = static () =>
+            {
+                var text = new TextBlock { Classes = { "H1" } };
+                text[!TextBlock.FontSizeProperty] = new DynamicResourceExtension("FontSizeH1");
+                text[!TextBlock.ThemeProperty] = new DynamicResourceExtension("TitleTextBlock");
+
+                return text;
+            },
+            ["H2"] = static () =>
+            {
+                var text = new TextBlock { Classes = { "H2" } };
+                text[!TextBlock.FontSizeProperty] = new DynamicResourceExtension("FontSizeH2");
+                text[!TextBlock.ThemeProperty] = new DynamicResourceExtension("TitleTextBlock");
+
+                return text;
+            },
+            ["P"] = static () =>
+            {
+                var text = new TextBlock { Classes = { "P" } };
+                text[!TextBlock.FontSizeProperty] = new DynamicResourceExtension("FontSizeP");
+                text[!TextBlock.ThemeProperty] = new DynamicResourceExtension("BodyTextBlock");
+
+                return text;
+            },
             [nameof(Code)] = static () => new Code(),
             [nameof(Lesson)] = static () => new Lesson(),
         }.ToFrozenDictionary(StringComparer.Ordinal);

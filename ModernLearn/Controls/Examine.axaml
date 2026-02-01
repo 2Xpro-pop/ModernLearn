@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:controls="using:ModernLearn.Controls">
+
+	<!--
+	Additional resources
+	Using Control Themes:
+	https://docs.avaloniaui.net/docs/basics/user-interface/styling/control-themes
+	Using Theme Variants:
+	https://docs.avaloniaui.net/docs/guides/styles-and-resources/how-to-use-theme-variants
+	-->
+
+	<Design.PreviewWith>
+		<StackPanel Width="400" Spacing="10">
+			<StackPanel Background="{DynamicResource SystemRegionBrush}">
+				<controls:Examine />
+			</StackPanel>
+		</StackPanel>
+	</Design.PreviewWith>
+
+	<ControlTheme x:Key="{x:Type controls:Examine}" TargetType="controls:Examine">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Grid>
+					<SplitView x:Name="PART_SplitView"
+							   PanePlacement="Left"
+							   DisplayMode="CompactOverlay"
+							   OpenPaneLength="300">
+						<SplitView.Pane>
+							<Button x:Name="PART_Button">
+								<PathIcon>
+									<PathIcon.Data>
+										M 3,6 L 21,6 L 21,8 L 3,8 Z M 3,11 L 21,11 L 21,13 L 3,13 Z M 3,16 L 21,16 L 21,18 L 3,18 Z
+									</PathIcon.Data>
+								</PathIcon>
+							</Button>
+						</SplitView.Pane>
+
+						<Grid>
+							<TextBlock Text="Content"
+									   FontSize="24"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center"/>
+						</Grid>
+					</SplitView>
+				</Grid>
+			</ControlTemplate>
+		</Setter>
+
+		<Style Selector="^ /template/ SplitView#SplitView">
+		</Style>
+
+	</ControlTheme>
+</ResourceDictionary>

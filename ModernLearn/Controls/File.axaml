@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:ae="https://github.com/avaloniaui/avaloniaedit"
+					xmlns:controls="using:ModernLearn.Controls">
+
+	<!--
+	Additional resources
+	Using Control Themes:
+	https://docs.avaloniaui.net/docs/basics/user-interface/styling/control-themes
+	Using Theme Variants:
+	https://docs.avaloniaui.net/docs/guides/styles-and-resources/how-to-use-theme-variants
+	-->
+
+	<Design.PreviewWith>
+		<StackPanel Width="500" Spacing="10">
+			<StackPanel Background="{DynamicResource SystemRegionBrush}">
+				<controls:File FilePath="Hello/11.cs" xml:space="preserve">
+					using System;
+
+					namespace HelloWorld
+					{
+						class Program
+						{
+							static void Main(string[] args)
+							{
+								Console.WriteLine("Hello, World!");
+							}
+						}
+					}
+				</controls:File>
+			</StackPanel>
+		</StackPanel>
+	</Design.PreviewWith>
+
+	<ControlTheme x:Key="{x:Type controls:File}" TargetType="controls:File">
+		<Setter Property="Template">
+			<ControlTemplate TargetType="controls:File">
+				<Grid RowDefinitions="Auto, Auto, Auto">
+
+					<TextBlock Name="PART_FileNameTextBlock"
+							   Grid.Row="0"
+							   Classes="H1"
+							   Theme="{StaticResource TitleTextBlock}"
+							   FontWeight="Bold"
+							   Margin="14,0,0,0"
+							   FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
+							   Text="{TemplateBinding FilePath}"/>
+
+					<Separator Grid.Row="1"/>
+
+					<ae:TextEditor Name="PART_TextEditor"
+								   Grid.Row="2"
+								   FontSize="{DynamicResource FontSizeInCode}"
+								   WordWrap="{DynamicResource WordWrapInCode}"
+								   ShowLineNumbers="True"
+								   IsReadOnly="True"
+								   FontFamily="Cascadia Code,Consolas,Menlo,Monospace"/>
+				</Grid>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>
